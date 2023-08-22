@@ -9,3 +9,5 @@
 
 ## Stop Services
 - docker compose down
+
+:warning: Tests live in [testing](https://github.com/rom-30/colours_api_2023_08_22/tree/testing) branch
