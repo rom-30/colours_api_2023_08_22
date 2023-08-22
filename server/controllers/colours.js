@@ -4,8 +4,8 @@ const index = async (req, res) => {
   try {
     const colours = await Colour.getAll()
     res.status(200).send({ data: colours })
-  } catch (error) {
-    res.status(500).send({ error })
+  } catch (err) {
+    res.status(500).send({ error: err.message })
   }
 }
 

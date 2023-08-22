@@ -4,11 +4,12 @@ class Colour {
   constructor(data) {
     this.id = data.id
     this.name = data.name
+    this.created_at = data.created_at
   }
 
   static async getAll() {
     try {
-      const coloursData = await db.query('SELECT * FROM colours')
+      const coloursData = await db.query('SELECT name FROM colours')
       return coloursData.rows.map(c => new Colour(c))
     } catch (error) {
       throw new Error(error.message)
@@ -20,7 +21,7 @@ class Colour {
       const colourData = await db.query("SELECT * FROM colours where name = $1", [colourName])
       return new Colour(colourData.rows[0])
     } catch (error) {
-      throw new Error(`${colourName} colour does not exist`)
+      throw new Error(`colour ${colourName} does not exist`)
     }
   }
 
@@ -30,7 +31,7 @@ class Colour {
 
       return new Colour(response.rows[0])
     } catch (err) {
-      throw new Error(err)
+      throw new Error(err.message)
     }
   }
 
